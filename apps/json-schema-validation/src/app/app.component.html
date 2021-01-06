@@ -10,9 +10,8 @@
   <h3>Selet the csv you want to validate</h3>
   <input type="file" id="csv-upload" name="csv-file" accept=".csv, text/plain" (change)="handleFileInput($event.target.files)"/>
   <h3>Select the schema you want to validate against</h3>
-  <select formControlName="SelectedSchema" label="Selected Schema" (change)="handleSchemaInput($event)">
-    <option *ngFor="let type of schemaOptions" [value]="type.id">{{ type.name }}
-    </option>
+  <select label="Selected Schema" (change)="handleSchemaInput($event)">
+    <option *ngFor="let type of schemaOptions" [value]="type.id">{{ type.name }}</option>
   </select>
   <button (click)="runValidation()">
     Run validation
