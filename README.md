@@ -8,6 +8,7 @@ A Collection of GTFS tools in an Nx Repo
 ```
 ng serve
 ```
+Then open the browser console to see results of the validation.
 
 #### Run Unit Tests
 ```
