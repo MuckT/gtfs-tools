@@ -1,5 +1,8 @@
 # GTFS-TOOLS
 A Collection of GTFS tools in an Nx Repo
+#### Setup
+1. Clone the repo to your local computer.
+2. Run ```npm install``` in the root directory.
 
 #### Run App Locally
 ```
