@@ -1,0 +1,178 @@
+{
+  "version": 1,
+  "projects": {
+    "json-schema-validation": {
+      "projectType": "application",
+      "root": "apps/json-schema-validation",
+      "sourceRoot": "apps/json-schema-validation/src",
+      "prefix": "gtfs-tools",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/json-schema-validation",
+            "index": "apps/json-schema-validation/src/index.html",
+            "main": "apps/json-schema-validation/src/main.ts",
+            "polyfills": "apps/json-schema-validation/src/polyfills.ts",
+            "tsConfig": "apps/json-schema-validation/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "apps/json-schema-validation/src/favicon.ico",
+              "apps/json-schema-validation/src/assets"
+            ],
+            "styles": ["apps/json-schema-validation/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/json-schema-validation/src/environments/environment.ts",
+                  "with": "apps/json-schema-validation/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "json-schema-validation:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "json-schema-validation:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "json-schema-validation:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/json-schema-validation/tsconfig.app.json",
+              "apps/json-schema-validation/tsconfig.spec.json",
+              "apps/json-schema-validation/tsconfig.editor.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/json-schema-validation/**/*"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/json-schema-validation"],
+          "options": {
+            "jestConfig": "apps/json-schema-validation/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "json-schema-validation-e2e": {
+      "root": "apps/json-schema-validation-e2e",
+      "sourceRoot": "apps/json-schema-validation-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/json-schema-validation-e2e/cypress.json",
+            "tsConfig": "apps/json-schema-validation-e2e/tsconfig.e2e.json",
+            "devServerTarget": "json-schema-validation:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "json-schema-validation:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["apps/json-schema-validation-e2e/tsconfig.e2e.json"],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/json-schema-validation-e2e/**/*"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/angular"
+  },
+  "schematics": {
+    "@nrwl/workspace": {
+      "library": {
+        "linter": "tslint"
+      }
+    },
+    "@nrwl/cypress": {
+      "cypress-project": {
+        "linter": "tslint"
+      }
+    },
+    "@nrwl/node": {
+      "application": {
+        "linter": "tslint"
+      },
+      "library": {
+        "linter": "tslint"
+      }
+    },
+    "@nrwl/nest": {
+      "application": {
+        "linter": "tslint"
+      },
+      "library": {
+        "linter": "tslint"
+      }
+    },
+    "@nrwl/express": {
+      "application": {
+        "linter": "tslint"
+      },
+      "library": {
+        "linter": "tslint"
+      }
+    },
+    "@nrwl/angular:application": {
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "unitTestRunner": "jest"
+    },
+    "@nrwl/angular:component": {
+      "style": "scss"
+    }
+  },
+  "defaultProject": "json-schema-validation"
+}
