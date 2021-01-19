@@ -1,7 +1,4 @@
 import { Component } from '@angular/core';
-import * as Papa from 'papaparse';
-import Ajv from "ajv";
-import addFormats from "ajv-formats";
 
 @Component({
   selector: 'gtfs-tools-root',
@@ -212,7 +209,7 @@ export class AppComponent {
   handleSchemaInput(event: any) {
     this.selectedSchema = event.target.value;
   }
-
+  /*
   runValidation() {
     // Check for null schemas
     if (this.schemaOptions[this.selectedSchema].schema === null){
@@ -242,4 +239,5 @@ export class AppComponent {
       }
     });
   }
+  */
 }
